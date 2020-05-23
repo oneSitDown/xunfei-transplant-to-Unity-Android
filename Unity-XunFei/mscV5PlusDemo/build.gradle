@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        //applicationId "com.example.myapplication11233"
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    allprojects {
+        repositories {
+		
+			// Msc.jar线上maven地址
+            jcenter()
+            mavenCentral()
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        //版本号请根据自己的gradle插件版本号自行更改
+        classpath 'com.android.tools.build:gradle:3.4.2'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+dependencies {
+
+  //  compile project(':MscLibSrc')
+    implementation 'com.android.support:support-v4:23+'
+    implementation 'com.squareup.leakcanary:leakcanary-android:1.5'
+    implementation files('libs/Msc.jar')
+  //  //debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+  //  releaseCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+}
