@@ -389,7 +389,8 @@ public class AsrDemo /*extends Activity implements OnClickListener*/{
 		
 		// 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
 		mAsr.setParameter(SpeechConstant.AUDIO_FORMAT,"wav");
-		mAsr.setParameter(SpeechConstant.ASR_AUDIO_PATH, Environment.getExternalStorageDirectory()+"/msc/asr.wav");
+		Log.d(TAG, "setParam: "+getActivity().getExternalCacheDir()+"/msc/asr.wav");
+		mAsr.setParameter(SpeechConstant.ASR_AUDIO_PATH, getActivity().getExternalCacheDir()+"/msc/asr.wav");
 		return result;
 	}
 	
@@ -434,7 +435,7 @@ public class AsrDemo /*extends Activity implements OnClickListener*/{
 	{
 		mEngineType =  SpeechConstant.TYPE_LOCAL;
 		StringBuffer param = new StringBuffer();
-		param.append("appid=5e4a3f32");
+		param.append("appid=c6f6cf8f");
 		param.append(",");
 		// 设置使用v5+
 		param.append(SpeechConstant.ENGINE_MODE+"="+SpeechConstant.MODE_MSC);
